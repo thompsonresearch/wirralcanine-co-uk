@@ -1,0 +1,6 @@
+# Allow all user-agents to access the main content of the website
+User-agent: *
+Disallow: /testing_area/    # testing folder blocked
+
+# Specify the location of your XML sitemap
+Sitemap: https://www.wirralcanine.co.uk/sitemap/sitemap.xml

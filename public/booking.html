@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "ContactPage",
+  "name": "Book Us - Wirral Canine Counselling",
+  "url": "https://www.wirralcanine.co.uk/booking",
+  "description": "Get in touch with Wirral Canine Counselling. Book our dog boarding, daycare and behaviour consultations.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+44-151-513-9042",
+    "contactType": "Customer Service",
+    "areaServed": "GB",
+    "availableLanguage": ["English"],
+    "email": "wirralcanine@gmail.com"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Woodchurch",
+    "addressLocality": "Wirral",
+    "postalCode": "CH49",
+    "addressCountry": "GB"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Wirral Canine Counselling",
+    "url": "https://www.wirralcanine.co.uk"
+  }
+}
+</script>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; script-src 'self'; style-src 'self';">
+  <title>Contact Us | Wirral Canine Counselling</title>
+  <meta name="description" content="Want to get in touch with Wirral Canine Counselling? You can do so at our contact page were you can find our email, telephone and social media links.">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Add custom fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Ovo&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+  
+  <!-- Main Header -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="images/wcc_logo_copyright.png" alt="Logo">
+    </div>
+    <nav>
+      <!-- Hamburger button -->
+      <button class="hamburger" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="behaviour.html">BEHAVIOUR</a></li>
+        <li><a href="boarding.html">BOARDING</a></li>
+        <li><a href="daycare.html">DAYCARE</a></li>
+        <li><a href="sitting.html">PET SITTING</a></li>
+        <!-- Omitted page for now <li><a href="walking.html">WALKING</a></li> -->
+        <li><a href="license.html">LICENSE</a></li>
+		<!-- Omitted page for now <li><a href="resources.html">RESOURCES</a></li> -->
+        <li><a href="about.html">OUR STORY</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+		<li><a href="booking.html"  class="active">BOOKING</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content">
+	
+	<div class="section contact-section">
+		<h1>Make a booking with us</h1>
+		<p>Please use the form below to make a booking for our services:</p>
+		<p>For any enquiries please feel free to email or call us. Please note, we will only accept bookings through this form.</p>
+		<p><b>Telephone:</b> (0151) 513 9042</p>
+		<p><b>Email:</b> wirralcanine@gmail.com</p>
+	</div>
+	
+	<!-- Add the paws using Unicode characters -->
+	<div class="star-rating">
+    &#128062; <!-- Unicode star character -->
+	</div>
+	
+	<!-- Integrate form below -->
+	
+	<div class="form-container">
+    <form action="/submit_form" method="POST">
+        <label for="service_type">Select Service:</label>
+        <select id="service_type" name="service_type" onchange="showFormFields();" required>
+            <option value="">--Please choose an option--</option>
+            <option value="dog_boarding">Dog Boarding</option>
+            <option value="pet_sitting">Pet Sitting</option>
+            <option value="doggy_daycare">Doggy Daycare</option>
+        </select>
+
+        <!-- Dog Boarding Add-ons -->
+        <div id="dog_boarding" class="form-section">
+            <h3>Dog Boarding Options</h3>
+            <label><input type="checkbox" id="extra_walks" name="extra_walks" value="10" onchange="calculateEstimate()"> Extra Walks (£10)</label><br>
+            <label><input type="checkbox" id="grooming" name="grooming" value="20" onchange="calculateEstimate()"> Grooming (£20)</label><br>
+        </div>
+
+        <!-- Pet Sitting Add-ons -->
+        <div id="pet_sitting" class="form-section">
+            <h3>Pet Sitting Options</h3>
+            <label><input type="checkbox" id="house_cleaning" name="house_cleaning" value="15" onchange="calculateEstimate()"> House Cleaning (£15)</label><br>
+        </div>
+
+        <!-- Doggy Daycare Add-ons -->
+        <div id="doggy_daycare" class="form-section">
+            <h3>Doggy Daycare Options</h3>
+            <label><input type="checkbox" id="meals_included" name="meals_included" value="5" onchange="calculateEstimate()"> Meals Included (£5)</label><br>
+        </div>
+
+        <!-- Date Selection -->
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" onchange="checkAvailability();" required><br>
+
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" onchange="checkAvailability();" required><br>
+
+        <!-- Display the estimate -->
+        <p id="total_estimate">Estimated Total Cost: £0</p>
+
+        <!-- Display availability status -->
+        <p id="statusMessage"></p>
+
+        <button type="submit">Next</button>
+    </form>
+</div>
+	
+	<!-- End of form area -->
+	
+  </main>
+
+  <script src="scripts/script.js"></script>
+  
+  <footer class="footer">
+    <div class="footer-content">
+      <p>Boarding License Number: 365285</p>
+      <p>&copy; <span id="current-year"></span> Wirral Canine Counselling. All rights reserved.</p>
+	  <p>Website developed by <a href="https://www.matthewthompson.uk">matthewthompson.uk</a></p>
+    </div>
+  </footer>
+
+	<script>
+		document.getElementById("current-year").textContent = new Date().getFullYear();
+	</script>
+
+
+</body>
+
+<script>
+    function showFormFields() {
+        const serviceType = document.getElementById('service_type').value;
+        const sections = document.querySelectorAll('.form-section');
+        sections.forEach(section => section.style.display = 'none');
+
+        if (serviceType) {
+            document.getElementById(serviceType).style.display = 'block';
+        }
+
+        calculateEstimate();
+    }
+
+    function calculateEstimate() {
+        let totalCost = 0;
+        const serviceType = document.getElementById('service_type').value;
+
+        if (serviceType === 'dog_boarding') {
+            totalCost = 50;
+            if (document.getElementById('extra_walks').checked) totalCost += 10;
+            if (document.getElementById('grooming').checked) totalCost += 20;
+        } else if (serviceType === 'pet_sitting') {
+            totalCost = 30;
+            if (document.getElementById('house_cleaning').checked) totalCost += 15;
+        } else if (serviceType === 'doggy_daycare') {
+            totalCost = 20;
+            if (document.getElementById('meals_included').checked) totalCost += 5;
+        }
+
+        document.getElementById('total_estimate').innerText = `Estimated Total Cost: £${totalCost}`;
+    }
+
+    function checkAvailability() {
+        const startDate = document.getElementById('start_date').value;
+        const endDate = document.getElementById('end_date').value;
+        const serviceType = document.getElementById('service_type').value;
+
+        if (startDate && endDate && serviceType) {
+            fetch('/check_availability', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ start_date: startDate, end_date: endDate, service_type: serviceType })
+            })
+            .then(response => response.json())
+            .then(data => {
+                let statusMessage = document.getElementById('statusMessage');
+                if (data.available) {
+                    statusMessage.innerText = 'Dates are available!';
+                    statusMessage.style.color = 'green';
+                } else {
+                    statusMessage.innerText = 'Dates are not available, please choose another range.';
+                    statusMessage.style.color = 'red';
+                }
+            });
+        }
+    }
+</script>
+
+
+</html>

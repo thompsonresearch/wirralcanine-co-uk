@@ -1,0 +1,427 @@
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: 'Ovo', serif; /* Apply Ovo font to the body text */
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 0;
+  margin: 0;
+}
+
+/* Navbar styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 140px; /* Increased height for the header */
+  padding: 0 20px;
+  background-color: #ebe1db;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.logo img {
+  height: 100%; /* Make the logo fill the header height */
+  max-height: 120px; /* Ensure the logo doesn't stretch */
+  object-fit: contain; /* Keep the logo's aspect ratio */
+}
+
+/* Main navigation */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Keeps the nav and hamburger aligned to the right */
+  flex-grow: 1;
+}
+
+/* Navigation links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* Increase space between nav items */
+}
+
+nav ul li {
+  position: relative; /* Ensure relative positioning for the flag/banner */
+}
+
+/* Base styling for links */
+nav ul li a {
+  font-family: 'Ovo', sans-serif; /* Apply Ovo font to nav links */
+  font-weight: normal; /* Set font weight to normal for Ovo */
+  text-decoration: none;
+  font-size: 1.25rem; /* Increase font size for navigation */
+  color: #333;
+  padding: 10px 20px;
+  position: relative;
+  transition: color 0.3s ease, background-color 0.3s ease; /* Transition for hover effects */
+  z-index: 1; /* Ensure the text is above the banner */
+  text-align: center;
+}
+
+/* Flag/banner styling for active nav item */
+nav ul li a.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 200%; /* Make the banner longer */
+  width: 120%; /* Adjust the width for the banner */
+  background-color: #b19d85; /* Background color for the active banner */
+  clip-path: polygon(50% 100%, 100% 85%, 100% 0, 0 0, 0 85%); /* Create the flag/rectangle shape with a triangular cut */
+  z-index: -1; /* Place the banner behind the text */
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a.active {
+  color: white; /* Change text color for the active item */
+}
+
+/* Hover effect for non-active items - white banner */
+nav ul li a:not(.active):hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 200%; /* Make the banner longer */
+  width: 100%; /* Adjust the width for the banner */
+  background-color: #bfaa8f; /* White banner on hover */
+  clip-path: polygon(50% 75%, 100% 85%, 100% 0, 0 0, 0 85%); /* Create the flag/rectangle shape with a triangular cut */
+  z-index: -1; /* Place the banner behind the text */
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a:not(.active):hover {
+  color: white; /* Change the text color to white on hover for non-active items */
+}
+
+/* Hamburger menu styling */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 10px;
+}
+
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 3px 0;
+  transition: 0.4s;
+}
+
+/* Disable banners in the hamburger menu */
+.nav-links.active nav ul li a::before,
+.nav-links.active nav ul li a::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Hamburger menu hover effect - background on hover */
+.nav-links.active nav ul li a:hover {
+  background-color: #bfaa8f; /* Background color on hover */
+  color: #333; /* Retain the text color on hover */
+}
+
+/* Content styling */
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px; /* Add padding to the content for spacing */
+  text-align: center;
+}
+
+.content h1 {
+  font-family: 'Ovo', sans-serif; /* Apply Ovo font to headers */
+  font-weight: bold; /* Set font weight to normal for Ovo */
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.content p {
+  font-family: 'Ovo', serif; /* Apply Ovo font to body text */
+  font-size: 1.25rem;
+  color: #555;
+  margin-bottom: 20px;
+  padding: 0 50px; /* Add padding to body paragraphs */
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1820px) {
+  .navbar {
+    flex-direction: row;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  nav ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  nav ul li a {
+    font-size: 1.5rem;
+    padding: 15px 20px;
+    width: 100%;
+  }
+
+  /* Disable banners in the hamburger menu */
+  nav ul li a::before,
+  nav ul li a::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  /* Hamburger menu hover effect - background on hover */
+  nav ul li a:hover {
+    background-color: #bfaa8f; /* Background color on hover */
+    color: #333; /* Retain the text color on hover */
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px;
+  }
+
+  .logo img {
+    max-height: 80px;
+  }
+
+  nav ul li a {
+    font-size: 1.5rem;
+    padding: 15px 20px;
+  }
+
+  .content {
+    padding: 30px 15px; /* Adjust padding for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    max-height: 60px;
+  }
+
+  .content {
+    padding: 20px 10px; /* Further adjust padding for very small screens */
+  }
+}
+
+/* Footer styling */
+.footer {
+  background-color: #ebe1db;
+  padding: 20px 40px; /* Add padding for left spacing */
+  text-align: left; /* Left align the text */
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content p {
+  font-family: 'Ovo', serif;
+  font-size: 1rem;
+  color: #333;
+  margin: 5px 0;
+}
+
+/* Adjust padding and font size for smaller screens */
+@media (max-width: 768px) {
+  .footer {
+    padding: 15px 20px; /* Less padding for smaller screens */
+  }
+
+  .footer-content p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 10px 15px; /* Further reduce padding for very small screens */
+  }
+
+  .footer-content p {
+    font-size: 0.85rem;
+  }
+}
+
+.section {
+  margin-top: 60px;
+  margin-bottom: 60px; /* Adds space below each section */
+}
+
+/* Image Gallery Section */
+.image-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between images */
+  margin: 60px 0; /* Space above and below the image gallery */
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.gallery-image {
+  width: 150px;
+  height: 150px; /* Keep the images squared */
+  object-fit: cover; /* Ensures images maintain aspect ratio and fill the box */
+  border-radius: 15px; /* Rounded corners for the images */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for the images */
+}
+
+/* Display images in pairs for smaller screens, keeping them square */
+@media (max-width: 768px) {
+  .gallery-image {
+    width: calc(50% - 20px); /* Two images per row with gap space considered */
+    height: calc(50vw - 40px); /* Ensure height follows the width to keep it square */
+    margin-bottom: 20px; /* Adds space between rows */
+  }
+}
+
+/* Adjust size for even smaller screens */
+@media (max-width: 480px) {
+  .gallery-image {
+    width: calc(50% - 10px); /* Maintain two images per row on small screens */
+    height: calc(50vw - 20px); /* Ensure height follows the width to keep it square */
+  }
+}
+
+/* Contact Section */
+.contact-section {
+  text-align: center; /* Center the content in this section */
+  margin-top: 60px;
+}
+
+.contact-section p {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+/* Social Icon Styling */
+.social-icon img {
+  width: 250px; /* Adjust the size as needed */
+  height: 250px;
+  margin-top: 20px; /* Match the margin between the paragraphs */
+  transition: transform 0.3s ease; /* Add a hover effect */
+}
+
+.social-icon img:hover {
+  transform: scale(1.1); /* Scale up the icon on hover */
+}
+
+/* Star Rating Styling */
+.star-rating {
+  text-align: center; /* Center the stars */
+  margin-top: 10px; /* Add space between the paragraph and the stars */
+}
+
+.star-rating img.star {
+  width: 30px; /* Set the size of the star images */
+  height: 30px;
+  margin: 0 5px; /* Space between the stars */
+}
+
+.star-rating {
+  font-size: 30px; /* Size for Unicode stars */
+  color: gold; /* Color for Unicode stars */
+  letter-spacing: 5px; /* Space between stars */
+}
+
+/* Image Gallery Section */
+.image-gallery-2 {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between images */
+  margin: 60px 0; /* Space above and below the image gallery */
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.gallery-image-2 {
+  width: 550px;
+  height: 250px; /* Keep the images squared */
+  object-fit: cover; /* Ensures images maintain aspect ratio and fill the box */
+  border-radius: 15px; /* Rounded corners for the images */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for the images */
+}
+
+/* Display images in pairs for smaller screens, keeping them square */
+@media (max-width: 768px) {
+  .gallery-image-2 {
+    width: calc(50% - 20px); /* Two images per row with gap space considered */
+    height: calc(50vw - 40px); /* Ensure height follows the width to keep it square */
+    margin-bottom: 20px; /* Adds space between rows */
+  }
+}
+
+/* Adjust size for even smaller screens */
+@media (max-width: 480px) {
+  .gallery-image-2 {
+    width: calc(50% - 10px); /* Maintain two images per row on small screens */
+    height: calc(50vw - 20px); /* Ensure height follows the width to keep it square */
+  }
+}
+
+img {
+  pointer-events: none;
+}
+
+.form-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-container h3 {
+    font-family: 'Raleway', sans-serif;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+#total_estimate, #statusMessage {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+
